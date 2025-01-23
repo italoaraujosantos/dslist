@@ -1,5 +1,6 @@
 package br.com.italo.dslist.entities;
 
+
 import java.util.Objects;
 
 import jakarta.persistence.EmbeddedId;
@@ -12,21 +13,23 @@ public class Belonging {
 
 	@EmbeddedId
 	private BelongingPK id = new BelongingPK();
+	
 	private Integer position;
 	
-	public Belonging(Game game, GameList gameList, Integer position) {
-		super();
-		this.id.setGame(game);
-		this.id.setGameList(gameList);
-		this.position = position;
-	}
-	
-	public BelongingPK getId() {
-		return id;
+	public void setGame(Game game) {
+		id.setGame(game);
 	}
 
-	public void setId(BelongingPK id) {
-		this.id = id;
+	public Game getGame() {
+		return id.getGame();
+	}
+
+	public void setList(GameList list) {
+		id.setList(list);
+	}
+
+	public GameList getList() {
+		return id.getList();
 	}
 
 	public Integer getPosition() {
@@ -53,5 +56,4 @@ public class Belonging {
 		Belonging other = (Belonging) obj;
 		return Objects.equals(id, other.id);
 	}
-	
 }
